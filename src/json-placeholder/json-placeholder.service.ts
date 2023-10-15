@@ -1,5 +1,5 @@
 import { HttpService } from '@nestjs/axios';
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { AxiosResponse } from 'axios';
 import { API_URL } from './json-placeholder.constants';
@@ -9,11 +9,13 @@ import { JSONPlaceholderResponse } from './json-placeholder.model';
 export class JsonplaceholderService {
   constructor(private readonly httpService: HttpService) {}
 
-  getAll(): Observable<AxiosResponse<JSONPlaceholderResponse[]>> {
-    return this.httpService.get(API_URL.posts);
+  async getAll(): Promise<AxiosResponse<JSONPlaceholderResponse[]>> {
+    const { data } = await this.httpService.axiosRef.get(API_URL.posts);
+    return data;
   }
 
-  getOne(id: number): Observable<AxiosResponse<JSONPlaceholderResponse>> {
-    return this.httpService.get(API_URL.posts + id);
+  async getOne(id: number): Promise<AxiosResponse<JSONPlaceholderResponse>> {
+    const { data } = await this.httpService.axiosRef.get(API_URL.posts + id);
+    return data;
   }
 }

@@ -1,9 +1,8 @@
+import { AxiosResponse } from 'axios';
 import { Controller, Get, Param } from '@nestjs/common';
-import { JsonplaceholderService } from './json-placeholder/json-placeholder.service';
 import { IdValidationPipe } from './pipes/id-validation.pipe';
-// import { Observable } from 'rxjs';
-// import { AxiosResponse } from 'axios';
-// import { JSONPlaceholderDto } from './json-placeholder/dto/json-placeholder.dto';
+import { JSONPlaceholderResponse } from './json-placeholder/json-placeholder.model';
+import { JsonplaceholderService } from './json-placeholder/json-placeholder.service';
 
 @Controller('posts')
 export class AppController {
@@ -12,16 +11,14 @@ export class AppController {
   ) {}
 
   @Get()
-  async getAll() {
-    // : Observable<AxiosResponse<JSONPlaceholderDto[]>> {
-    // return this.jsonPlaceholderService.getAll();
-    return 123;
+  async getAll(): Promise<AxiosResponse<JSONPlaceholderResponse[]>> {
+    return this.jsonPlaceholderService.getAll();
   }
 
   @Get(':id')
-  async getOne(@Param('id', IdValidationPipe) id: number) {
-    // : Observable<AxiosResponse<JSONPlaceholderDto[]>> {
-    // return this.jsonPlaceholderService.getAll();
-    return id;
+  getOne(
+    @Param('id', IdValidationPipe) id: number,
+  ): Promise<AxiosResponse<JSONPlaceholderResponse>> {
+    return this.jsonPlaceholderService.getOne(id);
   }
 }
