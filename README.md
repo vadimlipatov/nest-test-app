@@ -2,7 +2,14 @@
 
 ## Description
 
-API Написано на NestJS, c использованием axios, class-validator
+API Написано на NestJS, c использованием axios, custom pipes
+
+## Downloading
+
+```bash
+# clone or download from github
+$ git clone https://github.com/vadimlipatov/test-app.git
+```
 
 ## Installation
 
@@ -34,4 +41,14 @@ $ npm run test:e2e
 
 # test coverage
 $ npm run test:cov
+```
+
+## Request Example 
+
+```bash
+# get all posts
+$ http http://localhost:3002/api/posts
+
+# get one post
+$ http http://localhost:3002/api/posts/1
 ```
