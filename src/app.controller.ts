@@ -2,12 +2,12 @@ import { AxiosResponse } from 'axios';
 import { Controller, Get, Param } from '@nestjs/common';
 import { IdValidationPipe } from './pipes/id-validation.pipe';
 import { JSONPlaceholderResponse } from './json-placeholder/json-placeholder.model';
-import { JsonplaceholderService } from './json-placeholder/json-placeholder.service';
+import { JsonPlaceholderService } from './json-placeholder/json-placeholder.service';
 
 @Controller('posts')
 export class AppController {
   constructor(
-    private readonly jsonPlaceholderService: JsonplaceholderService,
+    private readonly jsonPlaceholderService: JsonPlaceholderService,
   ) {}
 
   @Get()

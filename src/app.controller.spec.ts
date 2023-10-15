@@ -1,22 +1,21 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
+// import { AppService } from './app.service';
+import { JsonPlaceholderService } from './json-placeholder/json-placeholder.service';
+import { HttpService } from '@nestjs/axios';
+// import { JSONPlaceholderResponse } from './json-placeholder/json-placeholder.model';
+// import { AxiosResponse } from 'axios';
 
 describe('AppController', () => {
-  let appController: AppController;
+  let jsonController: AppController;
+  let jsonService: JsonPlaceholderService;
+  let httpService: HttpService;
 
-  beforeEach(async () => {
-    const app: TestingModule = await Test.createTestingModule({
-      controllers: [AppController],
-      providers: [AppService],
-    }).compile();
-
-    appController = app.get<AppController>(AppController);
+  beforeEach(() => {
+    jsonService = new JsonPlaceholderService(httpService);
+    jsonController = new AppController(jsonService);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
-    });
+  it('should be defined', () => {
+    expect(jsonController).toBeDefined();
   });
 });

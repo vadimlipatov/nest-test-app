@@ -1,12 +1,11 @@
 import { HttpService } from '@nestjs/axios';
-import { Injectable, Logger } from '@nestjs/common';
-import { Observable } from 'rxjs';
+import { Injectable } from '@nestjs/common';
 import { AxiosResponse } from 'axios';
 import { API_URL } from './json-placeholder.constants';
 import { JSONPlaceholderResponse } from './json-placeholder.model';
 
 @Injectable()
-export class JsonplaceholderService {
+export class JsonPlaceholderService {
   constructor(private readonly httpService: HttpService) {}
 
   async getAll(): Promise<AxiosResponse<JSONPlaceholderResponse[]>> {

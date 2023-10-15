@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { JsonplaceholderService } from './json-placeholder.service';
-import { HttpModule, HttpService } from '@nestjs/axios';
+import { JsonPlaceholderService } from './json-placeholder.service';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
-  providers: [JsonplaceholderService],
+  providers: [JsonPlaceholderService],
   imports: [HttpModule],
-  exports: [JsonplaceholderService],
+  exports: [JsonPlaceholderService],
 })
-export class JsonplaceholderModule {}
+export class JsonPlaceholderModule {}

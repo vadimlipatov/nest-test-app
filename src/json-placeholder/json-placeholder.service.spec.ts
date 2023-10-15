@@ -1,18 +1,24 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { JsonplaceholderService } from './json-placeholder.service';
+import { JsonPlaceholderService } from './json-placeholder.service';
+import { AppController } from '../app.controller';
+import { HttpModule } from '@nestjs/axios';
 
 describe('JsonplaceholderService', () => {
-  let service: JsonplaceholderService;
+  let jsonPlaceholderService: JsonPlaceholderService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [JsonplaceholderService],
+      providers: [JsonPlaceholderService],
+      controllers: [AppController],
+      imports: [HttpModule],
     }).compile();
 
-    service = module.get<JsonplaceholderService>(JsonplaceholderService);
+    jsonPlaceholderService = module.get<JsonPlaceholderService>(
+      JsonPlaceholderService,
+    );
   });
 
   it('should be defined', () => {
-    expect(service).toBeDefined();
+    expect(jsonPlaceholderService).toBeDefined();
   });
 });
