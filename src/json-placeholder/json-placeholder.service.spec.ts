@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { JsonPlaceholderService } from './json-placeholder.service';
-import { AppController } from '../app.controller';
+import { JsonPlaceholderController } from './json-placeholder.controller';
 import { HttpModule } from '@nestjs/axios';
 
 describe('JsonplaceholderService', () => {
@@ -9,7 +9,7 @@ describe('JsonplaceholderService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [JsonPlaceholderService],
-      controllers: [AppController],
+      controllers: [JsonPlaceholderController],
       imports: [HttpModule],
     }).compile();
 
